@@ -15,12 +15,15 @@ import vista.VistaAgregarLibro;
 import vista.VistaAgregarProveedor;
 import vista.VistaBuscarCliente;
 import vista.VistaBuscarLibro;
+import vista.VistaBuscarProveedor;
 import vista.VistaEliminarCliente;
 import vista.VistaEliminarLibro;
 import vista.VistaEliminarProveedor;
 import vista.VistaModificarCliente;
 import vista.VistaModificarLibro;
+import vista.VistaModificarProveedor;
 import vista.VistaPrincipal;
+import vista.VistaRealizarVenta;
 
 /**
  *
@@ -39,10 +42,14 @@ public class Principal implements ActionListener{
     VistaModificarLibro Mlibro;
     VistaAgregarProveedor AProveedor;
     VistaEliminarProveedor EProveedor;
+    VistaBuscarProveedor BProveedor;
+    VistaModificarProveedor MProveedor;
+    VistaRealizarVenta RVenta;
     
     public Principal(VistaPrincipal principal, VistaAgregarCliente Acliente, VistaEliminarCliente Ecliente, VistaBuscarCliente Bcliente
     , VistaModificarCliente Mcliente, VistaAgregarLibro Alibro, VistaEliminarLibro Elibro, VistaBuscarLibro Blibro
-    , VistaModificarLibro Mlibro, VistaAgregarProveedor AProveedor, VistaEliminarProveedor EProveedor) {
+    , VistaModificarLibro Mlibro, VistaAgregarProveedor AProveedor, VistaEliminarProveedor EProveedor,
+    VistaBuscarProveedor BProveedor, VistaModificarProveedor MProveedor, VistaRealizarVenta RVenta) {
         this.principal=principal;
         this.Acliente=Acliente;
         this.Ecliente=Ecliente;
@@ -54,6 +61,9 @@ public class Principal implements ActionListener{
         this.Mlibro = Mlibro;
         this.AProveedor = AProveedor;
         this.EProveedor = EProveedor;
+        this.BProveedor = BProveedor;
+        this.MProveedor = MProveedor;
+        this.RVenta = RVenta;
         this.principal.ItemAgregarClientes.addActionListener(this);
         this.principal.ItemAgregarLibro.addActionListener(this);
         this.principal.ItemAgregarProveedor.addActionListener(this);
@@ -158,6 +168,15 @@ public class Principal implements ActionListener{
             Dimension desktopSize = principal.Panel.getSize();
             Dimension FrameSize =AProveedor.getSize();
             AProveedor.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2); 
+        }if (Item.equals(principal.ItemBuscarProveedor)) {
+            principal.Panel.add(BProveedor);
+            BProveedor.setVisible(true);
+            BProveedor.setClosable(true);
+            BProveedor.setMaximizable(true);
+            // Centrar la venta de AgregarClientes
+            Dimension desktopSize = principal.Panel.getSize();
+            Dimension FrameSize =BProveedor.getSize();
+            BProveedor.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2); 
         }if (Item.equals(principal.ItemEliminarProveedor)) {
             principal.Panel.add(EProveedor);
             EProveedor.setVisible(true);
@@ -166,7 +185,25 @@ public class Principal implements ActionListener{
             // Centrar la venta de AgregarClientes
             Dimension desktopSize = principal.Panel.getSize();
             Dimension FrameSize =EProveedor.getSize();
-            EProveedor.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2); 
+            EProveedor.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        }if (Item.equals(principal.ItemModificarProveedor)) {
+            principal.Panel.add(MProveedor);
+            MProveedor.setVisible(true);
+            MProveedor.setClosable(true);
+            MProveedor.setMaximizable(true);
+            // Centrar la venta de AgregarClientes
+            Dimension desktopSize = principal.Panel.getSize();
+            Dimension FrameSize =MProveedor.getSize();
+            MProveedor.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        }if (Item.equals(principal.ItemNuevoVenta)) {
+            principal.Panel.add(RVenta);
+            RVenta.setVisible(true);
+            RVenta.setClosable(true);
+            RVenta.setMaximizable(true);
+            // Centrar la venta de AgregarClientes
+            Dimension desktopSize = principal.Panel.getSize();
+            Dimension FrameSize =RVenta.getSize();
+            RVenta.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
         }
     }
     
