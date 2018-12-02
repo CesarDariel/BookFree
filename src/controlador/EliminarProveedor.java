@@ -74,7 +74,7 @@ public class EliminarProveedor implements ActionListener{
         int opc = JOptionPane.showConfirmDialog(EProveedor, "¿Seguro que decea borrar este dato");
         if (opc == 0) {
             if (bandera == 1) {
-                int si = JOptionPane.showConfirmDialog(EProveedor, "Para borrar la informacion del sistema, se ocupa borrar los libros relacionados, ¿Desea borrar los libros");
+                int si = JOptionPane.showConfirmDialog(EProveedor, "Para borrar la informacion del sistema, se ocupa borrar los libros relacionados, ¿Desea borrar los libros?");
                 if (si == 0) {
                     ResultSet socio = base.consultar("SELECT Cod_libro_sl FROM socio_libro where folio_socio_sl = '"+EProveedor.jtfBuscar.getText()+"'");
                     try {
@@ -91,6 +91,19 @@ public class EliminarProveedor implements ActionListener{
                 bandera = 0;
             }
             if (bandera == 2) {
+                int si = JOptionPane.showConfirmDialog(EProveedor, "Para borrar la infoacion del sistema, se ocupa borrar los libros relacionados, ¿Desea borrar los libros?");
+                if (si == 0) {
+                    ResultSet editorial = base.consultar("SELECT cod_libro_LE FROM libro_editorial where folio_editorial_LE = '"+EProveedor.jtfBuscar.getText()+"'");
+                    try {
+                        if (editorial.next()) {
+                            String codigo = editorial.getString("cod_libro_LE");
+                            base.actualizar("DELETE FROM libro_editorial where folio_editorial_LE = '"+EProveedor.jtfBuscar.getText()+"'");
+                            base.actualizar("DELETE FROM libro where cod_libro = '"+codigo+"'");
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(EliminarProveedor.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                 base.actualizar("DELETE FROM editorial where folio_editorial = '"+EProveedor.jtfBuscar.getText()+"'");
                 bandera = 0;
             }
