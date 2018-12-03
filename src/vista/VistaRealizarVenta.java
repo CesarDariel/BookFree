@@ -40,7 +40,8 @@ public class VistaRealizarVenta extends javax.swing.JInternalFrame {
         jlbColonia = new javax.swing.JLabel();
         jlbCP = new javax.swing.JLabel();
         jlbTelefono = new javax.swing.JLabel();
-        jlbFolio = new javax.swing.JLabel();
+        jtfFolio = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jtfCodigo = new javax.swing.JTextField();
@@ -60,7 +61,8 @@ public class VistaRealizarVenta extends javax.swing.JInternalFrame {
         jbnRealizarVenta = new javax.swing.JButton();
         jbnBuscarventa = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Realizar venta");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -95,7 +97,7 @@ public class VistaRealizarVenta extends javax.swing.JInternalFrame {
         jlbTelefono.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jlbTelefono.setText("Telefono");
 
-        jlbFolio.setText("Folio");
+        jLabel3.setText("Folio");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,9 +117,11 @@ public class VistaRealizarVenta extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jbnBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jlbFolio)
-                                .addGap(45, 45, 45)
+                                .addGap(177, 177, 177)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jtfFolio)
+                                .addGap(18, 18, 18)
                                 .addComponent(jlbFecha)
                                 .addGap(32, 32, 32))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -150,7 +154,8 @@ public class VistaRealizarVenta extends javax.swing.JInternalFrame {
                     .addComponent(jtfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlbFecha)
                     .addComponent(jbnBuscar)
-                    .addComponent(jlbFolio))
+                    .addComponent(jtfFolio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlbNombre)
@@ -172,6 +177,8 @@ public class VistaRealizarVenta extends javax.swing.JInternalFrame {
         jLabel2.setText("Codigo producto");
 
         jlbNombre_Producto.setText("Nombre");
+
+        jspCantidad_Producto.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jlbPrecio.setText("Precio");
 
@@ -365,6 +372,7 @@ public class VistaRealizarVenta extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -382,7 +390,6 @@ public class VistaRealizarVenta extends javax.swing.JInternalFrame {
     public javax.swing.JLabel jlbDireccion;
     public javax.swing.JLabel jlbEmail;
     public javax.swing.JLabel jlbFecha;
-    public javax.swing.JLabel jlbFolio;
     public javax.swing.JLabel jlbIVA;
     public javax.swing.JLabel jlbNombre;
     public javax.swing.JLabel jlbNombre_Producto;
@@ -395,5 +402,6 @@ public class VistaRealizarVenta extends javax.swing.JInternalFrame {
     public javax.swing.JTable jtbProductos;
     public javax.swing.JTextField jtfBuscar;
     public javax.swing.JTextField jtfCodigo;
+    public javax.swing.JTextField jtfFolio;
     // End of variables declaration//GEN-END:variables
 }
