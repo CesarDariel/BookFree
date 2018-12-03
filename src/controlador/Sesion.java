@@ -23,9 +23,12 @@ import vista.VistaPrincipal;
  * @author DARIE
  */
 public class Sesion implements ActionListener{
+    
     Base base;
     VistaSesion log;
     VistaPrincipal menu;
+    public String usr = "";
+    
     public Sesion(Base base, VistaSesion log, VistaPrincipal menu ) {
         this.menu = menu;
         this.base = base;
@@ -43,6 +46,7 @@ public class Sesion implements ActionListener{
             if (login.next()) {
                 menu.setVisible(true);
                 menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                usr = login.getString("id_usu");
                 log.dispose();
             }else{
                 JOptionPane.showMessageDialog(log, "Usuario no encontrado");
