@@ -66,7 +66,7 @@ public class BookFreeJava {
         EliminarProveedor EliProveedor = new EliminarProveedor(BD, VEliminarProveedor);
         BuscarProveedor BusProveedor = new BuscarProveedor(BD, VBuscarProveedor);
         ModificarProveedor ModProveedor = new ModificarProveedor(BD, VModificarProveedor);
-        RealizarVenta ReaVenta = new RealizarVenta(BD, VRealizarVenta);
+        RealizarVenta ReaVenta = new RealizarVenta(BD, VRealizarVenta, Sesion);
         
         VSesion.setVisible(true);
         
