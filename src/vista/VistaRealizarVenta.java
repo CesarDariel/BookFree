@@ -60,6 +60,8 @@ public class VistaRealizarVenta extends javax.swing.JInternalFrame {
         jbnEliminarProducto = new javax.swing.JButton();
         jbnRealizarVenta = new javax.swing.JButton();
         jbnBuscarventa = new javax.swing.JButton();
+        jbnNuevo = new javax.swing.JButton();
+        jbnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Realizar venta");
@@ -272,19 +274,29 @@ public class VistaRealizarVenta extends javax.swing.JInternalFrame {
 
         jbnBuscarventa.setText("Buscar venta");
 
+        jbnNuevo.setText("Nuevo");
+
+        jbnSalir.setText("Salir");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jbnGenerarFactura)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbnEliminarProducto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbnRealizarVenta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbnBuscarventa)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jbnGenerarFactura)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbnEliminarProducto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbnRealizarVenta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbnBuscarventa))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jbnNuevo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbnSalir)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -296,7 +308,11 @@ public class VistaRealizarVenta extends javax.swing.JInternalFrame {
                     .addComponent(jbnEliminarProducto)
                     .addComponent(jbnRealizarVenta)
                     .addComponent(jbnBuscarventa))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbnNuevo)
+                    .addComponent(jbnSalir))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -325,10 +341,10 @@ public class VistaRealizarVenta extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -383,7 +399,9 @@ public class VistaRealizarVenta extends javax.swing.JInternalFrame {
     public javax.swing.JButton jbnBuscarventa;
     public javax.swing.JButton jbnEliminarProducto;
     public javax.swing.JButton jbnGenerarFactura;
+    public javax.swing.JButton jbnNuevo;
     public javax.swing.JButton jbnRealizarVenta;
+    public javax.swing.JButton jbnSalir;
     public javax.swing.JLabel jlbApellidos;
     public javax.swing.JLabel jlbCP;
     public javax.swing.JLabel jlbColonia;
