@@ -158,7 +158,20 @@ public class RealizarVenta implements ActionListener, KeyListener{
         DefaultTableModel tabla = (DefaultTableModel) RVenta.jtbProductos.getModel();
         
         int seleccion = RVenta.jtbProductos.getSelectedRow();
-        System.out.println(seleccion);
+        
+        String codigo = (String) tabla.getValueAt(seleccion, 0);
+        tabla.removeRow(seleccion);
+        base.actualizar("DELETE FROM venta_libro where Cod_libroV = '"+codigo+"' and Folio_ventaL = '"+RVenta.jtfFolio.getText()+"'");
+        
+        sub = 0;
+                
+        for (int i = 0; i < tabla.getRowCount(); i++) {
+            sub += (float) tabla.getValueAt(i, 4);
+        }
+        float IVA = (float) (sub*0.16);
+        RVenta.jlbSubTotal.setText(String.valueOf(formato1.format(sub)));
+        RVenta.jlbIVA.setText(String.valueOf(formato1.format(IVA)));
+        RVenta.jlbTotal.setText(String.valueOf(formato1.format(sub+IVA)));
     }
     
     public void buscarventa(){
@@ -175,7 +188,9 @@ public class RealizarVenta implements ActionListener, KeyListener{
                 RVenta.jtfFolio.setEnabled(false);
                 RVenta.jtfBuscar.setText(String.valueOf(venta.getInt("id_cliente")));
                 RVenta.jtfBuscar.setEnabled(false);
-                ResultSet cliente = base.consultar("SELECT * FROM cliente where id = '"+venta.getInt("id_cliente"+"'"));
+                RVenta.jtfCodigo.setEnabled(false);
+                RVenta.jbnAgregar.setEnabled(false);
+                ResultSet cliente = base.consultar("SELECT * FROM cliente where id = '"+venta.getInt("id_cliente")+"'");
                 if (cliente.next()) {
                     RVenta.jlbApellidos.setText(cliente.getString("apellidos"));
                     RVenta.jlbCP.setText(String.valueOf(cliente.getInt("CP")));
@@ -188,14 +203,27 @@ public class RealizarVenta implements ActionListener, KeyListener{
                 }
                 ResultSet libros = base.consultar("SELECT * FROM venta_libro where Folio_ventaL = '"+buscar_venta+"'");
                 while(libros.next()){
-                    tabla.addRow(new Object[]{});// PENDIENTE
+                    tabla.addRow(new Object[]{libros.getString("Cod_libroV"), libros.getString("titulo"), libros.getString("autor"), String.valueOf(libros.getInt("cantidad")), libros.getString("precio_libro")});
                 }
+        
+                sub = 0;
+                
+                for (int i = 0; i < tabla.getRowCount(); i++) {
+                    sub += Float.parseFloat((String) tabla.getValueAt(i, 4));
+                }
+                float IVA = (float) (sub*0.16);
+                RVenta.jlbSubTotal.setText(String.valueOf(formato1.format(sub)));
+                RVenta.jlbIVA.setText(String.valueOf(formato1.format(IVA)));
+                RVenta.jlbTotal.setText(String.valueOf(formato1.format(sub+IVA)));
             }else{
                 JOptionPane.showMessageDialog(RVenta, "No se encontro la factura");
             }
         } catch (SQLException ex) {
             Logger.getLogger(RealizarVenta.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void limpiezar(){
     }
     
     @Override
@@ -212,6 +240,7 @@ public class RealizarVenta implements ActionListener, KeyListener{
             }
             if (boton.equals(RVenta.jbnRealizarVenta)) {
                 JOptionPane.showMessageDialog(RVenta, "La venta se ha realizado");
+                RVenta.dispose();
             }
             if (boton.equals(RVenta.jbnEliminarProducto)) {
                 eliminarproducto();
